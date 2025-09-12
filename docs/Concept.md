@@ -1,5 +1,5 @@
-Concept
-========
-The main rule here is that everything is a Tenant, no matter wether it run as sub-domain or main domain, to support this concept, our tenants system does not require to have a separated database always, a tenant can be created without database, and without even domain, then map its `id` via `tenancy.php` config file via identifiers mapping key, like we did by default with Central and Manager tenants.
+# Concept
 
-> NOTE: for better separation of concerns I highly suggest you create both Central and Manager tenants with separated database and not dropping the load at the main database connection.
+The core principle of this package is that **everything is a Tenant**—regardless of whether it operates on a subdomain or a primary domain. To support this, the tenancy system is designed with maximum flexibility: tenants are not required to have a dedicated database or even a domain. You can create tenants without these attributes and map their `id` using the identifiers `mapping` key in the `tenancy.php` configuration file, as demonstrated by the default setup for Central and Manager tenants.
+
+> **Recommendation:** For optimal separation of concerns and improved scalability, it is highly recommended to provision separate databases for both Central and Manager tenants, rather than relying on the main database connection.
