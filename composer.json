@@ -1,0 +1,33 @@
+{
+    "name": "ibraheem-ghazi/omni-tenancy",
+    "description": "Allow Laravel application to run as multi-tenants",
+    "keywords": ["php", "tenancy", "tenant", "tenants"],
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Ibraheem Ghazi",
+            "email": "contact@ibraheem-ghazi.dev"
+        }
+    ],
+    "require": {
+        "php": ">=8.2.0", 
+        "laravel/framework": ">=11.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "IbraheemGhazi\\OmniTenancy\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "IbraheemGhazi\\OmniTenancy\\TenancyServiceProvider"
+            ],
+			"aliases": {
+                "Tenancy": "IbraheemGhazi\\OmniTenancy\\Tenancy"
+            }
+        }
+    }
+}
