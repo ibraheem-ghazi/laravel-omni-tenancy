@@ -67,6 +67,7 @@ class TenancyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->registerPublishes();
         if(!Tenancy::isEnabled()){
             return;
         }
@@ -74,7 +75,6 @@ class TenancyServiceProvider extends ServiceProvider
         $this->loadHelpers();
         $this->loadMigrations();
         $this->loadConfigs();
-        $this->registerPublishes();
         $this->registerCommands();;
         $this->dontReportExceptions();
         $this->registerSingleDatabaseTenancyConcept();

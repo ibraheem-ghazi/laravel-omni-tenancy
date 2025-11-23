@@ -1,5 +1,5 @@
 {
-    "name": "ibraheem-ghazi/omni-tenancy",
+    "name": "ibraheem-ghazi/laravel-omni-tenancy",
     "description": "Allow Laravel application to run as multi-tenants",
     "keywords": ["php", "tenancy", "tenant", "tenants"],
     "type": "library",

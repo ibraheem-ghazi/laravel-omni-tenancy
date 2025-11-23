@@ -42,17 +42,42 @@ as a full host.
 - If you set the session driver to "database", its required to migrate the "sessions" table into the central database, because tenants that does not have its own database will use central database.
 
 ## Installation
+
+Since this package is not yet on Packagist, you must install it by adding the repository directly to your project's `composer.json` file.
+
+### A. Add Repository Configuration
+
+Open your project's `composer.json` file and add the following entry to the `repositories` section:
+
+```json
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "[https://github.com/ibraheem-ghazi/laravel-omni-tenancy](https://github.com/ibraheem-ghazi/laravel-omni-tenancy)"
+    }
+],
+
+### B. Require the package
+After adding the repository, require the package using the following command (or manually add it to the require section):
 ```
-composer require ibraheem-ghazi/omni-tenancy
+composer require ibraheem-ghazi/laravel-omni-tenancy:dev-main
+```
+### C. Publish Configuration
+```
+php artisan vendor:publish --provider="IbraheemGhazi\OmniTenancy\OmniTenancyServiceProvider"
 ```
 
-Once that finished, go to config/database.php file and duplicate the connection named "mysql", to name "mysql_tenant", or as it configured at tenancy.php.
+Once that finished, go to config/database.php file and duplicate the connection named "mysql", to name "mysql_tenancy", or as it configured at tenancy.php.
 
 then:
 ```
-php artisan migrate
+TENANCY_BYPASS=1 php artisan migrate
 php artisan tenant:init 
 ```
+
+> NOTE: for `routes/web.php` remove routes and adjust `routes/tenancy/central/web.php` and `routes/tenancy/manager/web.php` for the main `/` route, and then it should work.
+
+> NOTE: `routes/web.php` has priority over `routes/tenancy/**/*.php` so if you saw something override the tenancy routes its propably from this.
 
 if your installed laravel version does not support auto discover packages then:
 
