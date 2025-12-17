@@ -56,6 +56,7 @@ Open your project's `composer.json` file and add the following entry to the `rep
         "url": "[https://github.com/ibraheem-ghazi/laravel-omni-tenancy](https://github.com/ibraheem-ghazi/laravel-omni-tenancy)"
     }
 ],
+```
 
 ### B. Require the package
 After adding the repository, require the package using the following command (or manually add it to the require section):
