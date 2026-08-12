@@ -16,6 +16,14 @@ if (! function_exists('tenancy')) {
         return $instance;
     }
 }
+
+if (! function_exists('tenant')) {
+    function tenant()
+    {
+        return tenancy()->context()->getCurrentTenant();
+    }
+}
+
 if (! function_exists('tenant_asset')) {
     /**
      * Generate an asset path based on current tenant context.

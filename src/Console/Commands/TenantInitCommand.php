@@ -19,6 +19,7 @@ class TenantInitCommand extends Command
 
     public function handle(): int
     {
+        $this->ensureSeederClassesExist();
         $this->migrateCentralConnectionDatabase();
         $this->createFirstTenant();
         $this->createManagerTenant();
@@ -110,5 +111,24 @@ class TenantInitCommand extends Command
 
             ]
         ]);
+    }
+
+    protected function ensureSeederClassesExist(): void
+    {
+        $seeders = [
+            'CentralOnlyDatabaseSeeder',
+            'SharedDatabaseSeeder',
+            'TenantOnlyDatabaseSeeder',
+        ];
+
+        foreach ($seeders as $seeder) {
+            $path = database_path("seeders/{$seeder}.php");
+
+            if (!file_exists($path)) {
+                $this->call('make:seeder', [
+                    'name' => $seeder,
+                ]);
+            }
+        }
     }
 }

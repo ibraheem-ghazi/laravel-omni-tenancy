@@ -272,7 +272,7 @@ class DatabaseTenantCreator extends AbstractTenantCreator
             return null;
         }
 
-        assert(class_exists($seederClass), "\"tenancy.database.seeder_class\" class not exists");
+        assert(class_exists($seederClass), "the configured seeder class at \"tenancy.database.seeder_class\" does not exists");
 
         static::callSeeder($tenant->getId(), $seederClass);
 
